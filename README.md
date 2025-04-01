@@ -22,6 +22,7 @@
   - Highlights suspicious processes
 - Ends execution with a pause
 
+### 🧠 Что делает скрипт
 
 - Запускает PowerShell через Win+R
 - Проверяет IP-адреса локальных интерфейсов
