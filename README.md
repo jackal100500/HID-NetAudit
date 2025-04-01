@@ -1,6 +1,7 @@
 # HID-NetAudit
 
 🛡️ HID-NetAudit is a standalone PowerShell HID script running from a USB device (based on ATmega32u4 with SD card) designed for local auditing of network connections, ports and processes on Windows machines **without administrator rights**.
+
 🛡️ HID-NetAudit — это автономный PowerShell HID-скрипт, запускаемый с USB-устройства (на базе ATmega32u4 с SD-картой), предназначенный для локального аудита сетевых соединений, портов и процессов на Windows-машинах **без прав администратора**.
 
 ---
