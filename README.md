@@ -21,7 +21,8 @@
   - Outputs PID + process name
   - Highlights suspicious processes
 - Ends execution with a pause
-/
+
+
 - Запускает PowerShell через Win+R
 - Проверяет IP-адреса локальных интерфейсов
 - Анализирует активные `Established` TCP-соединения
