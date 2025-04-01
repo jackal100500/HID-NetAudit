@@ -1,0 +1,107 @@
+REM --- Force PowerShell output in English ---
+DELAY 300
+STRING $OutputEncoding = [Console]::OutputEncoding = [Text.Encoding]::UTF8
+ENTER
+DELAY 300
+STRING [Threading.Thread]::CurrentThread.CurrentUICulture = New-Object System.Globalization.CultureInfo("en-US")
+ENTER
+DELAY 300
+
+REM --- Get local IPs ---
+STRING $ip = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.InterfaceAlias -ne 'Loopback' -and $_.PrefixOrigin -ne 'WellKnown' }).IPAddress
+ENTER
+DELAY 300
+STRING Write-Host "Local IPs: $ip"
+ENTER
+DELAY 300
+
+REM --- Analyze ESTABLISHED connections ---
+STRING $conns = Get-NetTCPConnection | Where-Object { $_.State -eq "Established" }
+ENTER
+DELAY 300
+STRING $data = @()
+ENTER
+STRING foreach ($c in $conns) {
+ENTER
+STRING try {
+ENTER
+STRING $proc = Get-Process -Id $c.OwningProcess
+ENTER
+STRING $isExt = -not ($c.RemoteAddress -like "10.*" -or $c.RemoteAddress -like "192.168.*" -or $c.RemoteAddress -like "172.1[6-9].*" -or $c.RemoteAddress -like "172.2[0-9].*" -or $c.RemoteAddress -like "172.3[0-1].*")
+ENTER
+STRING $data += [PSCustomObject]@{
+ENTER
+STRING RemoteIP=$c.RemoteAddress; Port=$c.RemotePort
+ENTER
+STRING PID=$c.OwningProcess; Process=$proc.ProcessName
+ENTER
+STRING External=$isExt
+ENTER
+STRING }
+ENTER
+STRING } catch {}
+ENTER
+STRING }
+ENTER
+
+REM --- Sort and print connection table ---
+STRING Write-Host "ESTABLISHED CONNECTIONS"
+ENTER
+STRING foreach ($d in ($data | Sort-Object Process)) {
+ENTER
+STRING $line = "{0,-15} {1,-6} {2,-7} {3,-15} {4}" -f $d.RemoteIP, $d.Port, $d.PID, $d.Process, $(if ($d.External) {'✅'} else {'❌'})
+ENTER
+STRING if ($d.Process -match "svchost|system|explorer|powershell") {
+ENTER
+STRING Write-Host $line -ForegroundColor Green
+ENTER
+STRING } elseif ($d.Process -match "chrome|teams|edge|onedrive|update|browser|whatsapp|telegram") {
+ENTER
+STRING Write-Host $line -ForegroundColor Yellow
+ENTER
+STRING } else {
+ENTER
+STRING Write-Host $line -ForegroundColor Red
+ENTER
+STRING }
+ENTER
+STRING }
+ENTER
+
+REM --- Analyze LISTENING ports ---
+STRING $listens = Get-NetTCPConnection | Where-Object { $_.State -eq "Listen" }
+ENTER
+STRING $whitelist = @(80, 443, 135, 445, 139, 3389)
+ENTER
+DELAY 300
+
+STRING Write-Host "LISTENING PORTS CHECK"
+ENTER
+STRING foreach ($l in $listens) {
+ENTER
+STRING try {
+ENTER
+STRING $proc = Get-Process -Id $l.OwningProcess
+ENTER
+STRING $status = if ($whitelist -contains $l.LocalPort) { "Trusted ✅" } else { "⚠ Unknown ⚠" }
+ENTER
+STRING $line = "{0,-5} {1,-6} {2,-15} {3}" -f $l.LocalPort, $l.OwningProcess, $proc.ProcessName, $status
+ENTER
+STRING if ($status -like "*Trusted*") {
+ENTER
+STRING Write-Host $line -ForegroundColor Green
+ENTER
+STRING } else {
+ENTER
+STRING Write-Host $line -ForegroundColor Red
+ENTER
+STRING }
+ENTER
+STRING } catch {}
+ENTER
+STRING }
+ENTER
+
+REM --- Final pause ---
+STRING pause
+ENTER
