@@ -84,4 +84,4 @@ LISTENING PORTS CHECK 445 4 System Trusted ✅ 5555 8890 unknown.exe ⚠ Unknown
 
 ## 🖼 Иконка проекта
 
-![HID-NetAudit Icon](./icon.png)
+![HID-NetAudit Icon](./docs/icon.png)
