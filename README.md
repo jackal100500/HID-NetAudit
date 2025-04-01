@@ -55,13 +55,18 @@ USB HID (ATmega32u4) ↓ Keyboard input ↓ Запуск PowerShell ↓ Выпо
 
 📋 Вывод:
 
-Local IPs: 192.168.1.7
+```plaintext
+Local IPs: 192.168.1.10
 
-ESTABLISHED CONNECTIONS 8.8.8.8 443 4128 chrome ✅ 185.44.12.11 5555 7732 suspapp.exe ✅
+ESTABLISHED CONNECTIONS
+8.8.8.8         443    3120   chrome          
+212.45.66.1     445    4444   unknown.exe     
 
-LISTENING PORTS CHECK 445 4 System Trusted ✅ 5555 8890 unknown.exe ⚠ Unknown ⚠
+LISTENING PORTS CHECK
+445   4      System           Trusted 
+5555  1111   backdoor         ⚠ Unknown ⚠
 
-
+```
 ---
 
 ## 🛡 Назначение
@@ -77,8 +82,6 @@ LISTENING PORTS CHECK 445 4 System Trusted ✅ 5555 8890 unknown.exe ⚠ Unknown
 
 > Проект разработан **исключительно для целей аудита и обучения**.  
 > Использование без разрешения может нарушать локальное законодательство.
-
----
 
 ---
 
