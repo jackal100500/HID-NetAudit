@@ -11,6 +11,7 @@
 | `HID-NetAudit.ino`| Arduino sketch for ATmega32u4 with HID + SD  |
 | `script.txt`      | PowerShell command script for analysis        |
 | `README.md`       | Documentation                                 |
+| `README.ru.md`       | Documentation on Russian                              |
 
 ---
 
