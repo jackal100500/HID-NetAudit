@@ -81,7 +81,7 @@ SD-карта используется для хранения `script.txt`, к�
 - 🔐 Проверка RDP (настраивается)
 - 🧩 Не требует PowerShell-модулей
 
-📋 Вывод:
+📋 Example Output:
 
 ```plaintext
 Local IPs: 192.168.1.10
@@ -95,7 +95,10 @@ LISTENING PORTS CHECK
 5555  1111   backdoor         ⚠ Unknown ⚠
 
 ```
+Example output ESTABLISHED CONNECTIONS:
 ![HID-NetAudit Icon](./docs/im1.png)
+
+Example output LISTENING PORTS CHECK:
 ![HID-NetAudit Icon](./docs/im2.png)
 
 ---
