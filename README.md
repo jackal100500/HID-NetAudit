@@ -28,10 +28,6 @@
 📊 Таблица соединений  
 🛡 Проверка RDP / портов
 
-**Поток выполнения**:  
-`USB HID` → `Keyboard input` → `PowerShell` → `script.txt`  
-→ `IP`, `таблица процессов`, `порты`, `RDP`
-
 ---
 
 ## 🎮 Arduino-скетч `HID-NetAudit.ino`
@@ -80,6 +76,9 @@ LISTENING PORTS CHECK
 5555  1111   backdoor         ⚠ Unknown ⚠
 
 ```
+![HID-NetAudit Icon](./docs/im1.png)
+![HID-NetAudit Icon](./docs/im2.png)
+
 ---
 
 ## 🛡 Назначение
