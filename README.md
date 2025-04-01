@@ -14,10 +14,23 @@
 
 ---
 
-## 🧠 Архитектура
+## 🧠 Архитектура процесса
 
-USB HID (ATmega32u4) ↓ Keyboard input ↓ Запуск PowerShell ↓ Выполнение script.txt ↓ → IP и порты → Таблица PID/процессы → Проверка RDP и Listen
+🖥 USB HID (ATmega32u4)  
+⬇️  
+⌨️ Keyboard input (эмуляция ввода)  
+⬇️  
+💻 Запуск PowerShell  
+⬇️  
+📄 Выполнение `script.txt`  
+⬇️  
+📡 Получение IP  
+📊 Таблица соединений  
+🛡 Проверка RDP / портов
 
+**Поток выполнения**:  
+`USB HID` → `Keyboard input` → `PowerShell` → `script.txt`  
+→ `IP`, `таблица процессов`, `порты`, `RDP`
 
 ---
 
