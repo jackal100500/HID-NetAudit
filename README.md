@@ -96,9 +96,11 @@ LISTENING PORTS CHECK
 
 ```
 Example output ESTABLISHED CONNECTIONS:
+
 ![HID-NetAudit Icon](./docs/im1.png)
 
 Example output LISTENING PORTS CHECK:
+
 ![HID-NetAudit Icon](./docs/im2.png)
 
 ---
